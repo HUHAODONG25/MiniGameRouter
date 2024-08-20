@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+message EndpointProto {
+    string ip_address = 1;      // 地址
+    int32 port = 2;             // 端口号
+    string svc_name = 3;        // 属于哪种服务
+    int32 weight = 4;           // 权重
+}
+
+message MessageProto {
+    EndpointProto sender = 1;       // 发送端
+    EndpointProto receiver = 2;     // 接收端
+    string key = 3;                 // 动态键
+    int32 m_type = 4;               // 消息类型
+    string content = 5;             // 包体（可能是序列化内容）
+    string timestamp = 6;           // 时间戳
+}
+
+message ContentProto {
+    repeated EndpointProto eps = 1;
+}
